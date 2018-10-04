@@ -6,9 +6,10 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3307/webmusic
-    username: root
+    username: root1
     password: wangcaiming
     type: com.alibaba.druid.pool.DruidDataSource
+
     #清除缓存
     groovy:
       template:
@@ -25,3 +26,8 @@ spring:
           starttls:
             enable: true
             required: true
+mybatis:
+  #mapper xml实现扫描路径
+  mapperLocations: classpath:mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔,type-aliases扫描路径
+  typeAliasesPackage: com.secondgroud.front.webmusic.entity

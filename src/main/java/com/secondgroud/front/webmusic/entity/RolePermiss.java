@@ -1,4 +1,4 @@
-package entity;
+package com.secondgroud.front.webmusic.entity;
 
 public class RolePermiss {
     private Integer rolePermissId;

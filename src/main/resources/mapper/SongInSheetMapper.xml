@@ -1,135 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.SongInSheetMapper">
-  <resultMap id="BaseResultMap" type="entity.SongInSheet">
-    <id column="song_in_sheet_id" jdbcType="INTEGER" property="songInSheetId" />
-    <result column="song_in_sheet_song_sheet" jdbcType="INTEGER" property="songInSheetSongSheet" />
-    <result column="song_in_sheet_song" jdbcType="INTEGER" property="songInSheetSong" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.SongInSheetMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.SongInSheet" >
+    <id column="song_in_sheet_id" property="songInSheetId" jdbcType="INTEGER" />
+    <result column="song_in_sheet_song_sheet" property="songInSheetSongSheet" jdbcType="INTEGER" />
+    <result column="song_in_sheet_song" property="songInSheetSong" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     song_in_sheet_id, song_in_sheet_song_sheet, song_in_sheet_song
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from song_in_sheet
     where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from song_in_sheet
     where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.SongInSheet">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.SongInSheet" >
     insert into song_in_sheet (song_in_sheet_id, song_in_sheet_song_sheet, 
       song_in_sheet_song)
     values (#{songInSheetId,jdbcType=INTEGER}, #{songInSheetSongSheet,jdbcType=INTEGER}, 
       #{songInSheetSong,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="entity.SongInSheet">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.SongInSheet" >
     insert into song_in_sheet
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="songInSheetId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="songInSheetId != null" >
         song_in_sheet_id,
       </if>
-      <if test="songInSheetSongSheet != null">
+      <if test="songInSheetSongSheet != null" >
         song_in_sheet_song_sheet,
       </if>
-      <if test="songInSheetSong != null">
+      <if test="songInSheetSong != null" >
         song_in_sheet_song,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="songInSheetId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="songInSheetId != null" >
         #{songInSheetId,jdbcType=INTEGER},
       </if>
-      <if test="songInSheetSongSheet != null">
+      <if test="songInSheetSongSheet != null" >
         #{songInSheetSongSheet,jdbcType=INTEGER},
       </if>
-      <if test="songInSheetSong != null">
+      <if test="songInSheetSong != null" >
         #{songInSheetSong,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.SongInSheet">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.SongInSheet" >
     update song_in_sheet
-    <set>
-      <if test="songInSheetSongSheet != null">
+    <set >
+      <if test="songInSheetSongSheet != null" >
         song_in_sheet_song_sheet = #{songInSheetSongSheet,jdbcType=INTEGER},
       </if>
-      <if test="songInSheetSong != null">
+      <if test="songInSheetSong != null" >
         song_in_sheet_song = #{songInSheetSong,jdbcType=INTEGER},
       </if>
     </set>
     where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.SongInSheet">
-    update song_in_sheet
-    set song_in_sheet_song_sheet = #{songInSheetSongSheet,jdbcType=INTEGER},
-      song_in_sheet_song = #{songInSheetSong,jdbcType=INTEGER}
-    where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.SongInSheet">
-    <id column="song_in_sheet_id" jdbcType="INTEGER" property="songInSheetId" />
-    <result column="song_in_sheet_song_sheet" jdbcType="INTEGER" property="songInSheetSongSheet" />
-    <result column="song_in_sheet_song" jdbcType="INTEGER" property="songInSheetSong" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    song_in_sheet_id, song_in_sheet_song_sheet, song_in_sheet_song
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from song_in_sheet
-    where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from song_in_sheet
-    where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.SongInSheet">
-    insert into song_in_sheet (song_in_sheet_id, song_in_sheet_song_sheet, 
-      song_in_sheet_song)
-    values (#{songInSheetId,jdbcType=INTEGER}, #{songInSheetSongSheet,jdbcType=INTEGER}, 
-      #{songInSheetSong,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.SongInSheet">
-    insert into song_in_sheet
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="songInSheetId != null">
-        song_in_sheet_id,
-      </if>
-      <if test="songInSheetSongSheet != null">
-        song_in_sheet_song_sheet,
-      </if>
-      <if test="songInSheetSong != null">
-        song_in_sheet_song,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="songInSheetId != null">
-        #{songInSheetId,jdbcType=INTEGER},
-      </if>
-      <if test="songInSheetSongSheet != null">
-        #{songInSheetSongSheet,jdbcType=INTEGER},
-      </if>
-      <if test="songInSheetSong != null">
-        #{songInSheetSong,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.SongInSheet">
-    update song_in_sheet
-    <set>
-      <if test="songInSheetSongSheet != null">
-        song_in_sheet_song_sheet = #{songInSheetSongSheet,jdbcType=INTEGER},
-      </if>
-      <if test="songInSheetSong != null">
-        song_in_sheet_song = #{songInSheetSong,jdbcType=INTEGER},
-      </if>
-    </set>
-    where song_in_sheet_id = #{songInSheetId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.SongInSheet">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.SongInSheet" >
     update song_in_sheet
     set song_in_sheet_song_sheet = #{songInSheetSongSheet,jdbcType=INTEGER},
       song_in_sheet_song = #{songInSheetSong,jdbcType=INTEGER}

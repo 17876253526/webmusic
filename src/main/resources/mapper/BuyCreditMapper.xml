@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.BuyCreditMapper" >
-  <resultMap id="BaseResultMap" type="entity.BuyCredit" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.BuyCreditMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.BuyCredit" >
     <id column="buy_credit_id" property="buyCreditId" jdbcType="INTEGER" />
     <result column="buy_credit_user" property="buyCreditUser" jdbcType="INTEGER" />
     <result column="num" property="num" jdbcType="INTEGER" />
@@ -20,13 +20,13 @@
     delete from buy_credit
     where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.BuyCredit" >
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.BuyCredit" >
     insert into buy_credit (buy_credit_id, buy_credit_user, num, 
       buy_time)
     values (#{buyCreditId,jdbcType=INTEGER}, #{buyCreditUser,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
       #{buyTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="entity.BuyCredit" >
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.BuyCredit" >
     insert into buy_credit
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="buyCreditId != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.BuyCredit" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.BuyCredit" >
     update buy_credit
     <set >
       <if test="buyCreditUser != null" >
@@ -72,7 +72,7 @@
     </set>
     where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.BuyCredit" >
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.BuyCredit" >
     update buy_credit
     set buy_credit_user = #{buyCreditUser,jdbcType=INTEGER},
       num = #{num,jdbcType=INTEGER},

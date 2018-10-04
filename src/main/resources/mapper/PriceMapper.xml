@@ -1,138 +1,71 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.PriceMapper">
-  <resultMap id="BaseResultMap" type="entity.Price">
-    <id column="priceId" jdbcType="INTEGER" property="priceid" />
-    <result column="intergral_price" jdbcType="DOUBLE" property="intergralPrice" />
-    <result column="vip_price" jdbcType="DOUBLE" property="vipPrice" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.PriceMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.Price" >
+    <id column="priceId" property="priceid" jdbcType="INTEGER" />
+    <result column="intergral_price" property="intergralPrice" jdbcType="DOUBLE" />
+    <result column="vip_price" property="vipPrice" jdbcType="DOUBLE" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     priceId, intergral_price, vip_price
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from price
     where priceId = #{priceid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from price
     where priceId = #{priceid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.Price">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.Price" >
     insert into price (priceId, intergral_price, vip_price
       )
     values (#{priceid,jdbcType=INTEGER}, #{intergralPrice,jdbcType=DOUBLE}, #{vipPrice,jdbcType=DOUBLE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="entity.Price">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.Price" >
     insert into price
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="priceid != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="priceid != null" >
         priceId,
       </if>
-      <if test="intergralPrice != null">
+      <if test="intergralPrice != null" >
         intergral_price,
       </if>
-      <if test="vipPrice != null">
+      <if test="vipPrice != null" >
         vip_price,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="priceid != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="priceid != null" >
         #{priceid,jdbcType=INTEGER},
       </if>
-      <if test="intergralPrice != null">
+      <if test="intergralPrice != null" >
         #{intergralPrice,jdbcType=DOUBLE},
       </if>
-      <if test="vipPrice != null">
+      <if test="vipPrice != null" >
         #{vipPrice,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.Price">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.Price" >
     update price
-    <set>
-      <if test="intergralPrice != null">
+    <set >
+      <if test="intergralPrice != null" >
         intergral_price = #{intergralPrice,jdbcType=DOUBLE},
       </if>
-      <if test="vipPrice != null">
+      <if test="vipPrice != null" >
         vip_price = #{vipPrice,jdbcType=DOUBLE},
       </if>
     </set>
     where priceId = #{priceid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.Price">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.Price" >
     update price
     set intergral_price = #{intergralPrice,jdbcType=DOUBLE},
       vip_price = #{vipPrice,jdbcType=DOUBLE}
     where priceId = #{priceid,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.Price">
-    <id column="price_id" jdbcType="INTEGER" property="priceId" />
-    <result column="intergral_price" jdbcType="INTEGER" property="intergralPrice" />
-    <result column="vip_price" jdbcType="INTEGER" property="vipPrice" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    price_id, intergral_price, vip_price
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from price
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from price
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.Price">
-    insert into price (price_id, intergral_price, vip_price
-      )
-    values (#{priceId,jdbcType=INTEGER}, #{intergralPrice,jdbcType=INTEGER}, #{vipPrice,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="entity.Price">
-    insert into price
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="priceId != null">
-        price_id,
-      </if>
-      <if test="intergralPrice != null">
-        intergral_price,
-      </if>
-      <if test="vipPrice != null">
-        vip_price,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="priceId != null">
-        #{priceId,jdbcType=INTEGER},
-      </if>
-      <if test="intergralPrice != null">
-        #{intergralPrice,jdbcType=INTEGER},
-      </if>
-      <if test="vipPrice != null">
-        #{vipPrice,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.Price">
-    update price
-    <set>
-      <if test="intergralPrice != null">
-        intergral_price = #{intergralPrice,jdbcType=INTEGER},
-      </if>
-      <if test="vipPrice != null">
-        vip_price = #{vipPrice,jdbcType=INTEGER},
-      </if>
-    </set>
-    where price_id = #{priceId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.Price">
-    update price
-    set intergral_price = #{intergralPrice,jdbcType=INTEGER},
-      vip_price = #{vipPrice,jdbcType=INTEGER}
-    where price_id = #{priceId,jdbcType=INTEGER}
   </update>
 </mapper>

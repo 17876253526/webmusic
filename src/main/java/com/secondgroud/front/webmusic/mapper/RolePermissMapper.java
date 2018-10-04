@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.RolePermiss;
+import com.secondgroud.front.webmusic.entity.RolePermiss;
 
 public interface RolePermissMapper {
     int deleteByPrimaryKey(Integer rolePermissId);

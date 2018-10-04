@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Price;
+import com.secondgroud.front.webmusic.entity.Price;
 
 public interface PriceMapper {
     int deleteByPrimaryKey(Integer priceid);

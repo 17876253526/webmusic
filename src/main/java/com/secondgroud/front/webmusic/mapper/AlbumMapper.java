@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Album;
+import com.secondgroud.front.webmusic.entity.Album;
 
 public interface AlbumMapper {
     int deleteByPrimaryKey(Integer albumId);

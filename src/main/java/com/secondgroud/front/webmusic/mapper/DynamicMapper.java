@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Dynamic;
+import com.secondgroud.front.webmusic.entity.Dynamic;
 
 public interface DynamicMapper {
     int deleteByPrimaryKey(Integer dynamicId);

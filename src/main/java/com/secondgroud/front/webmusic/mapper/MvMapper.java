@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Mv;
+import com.secondgroud.front.webmusic.entity.Mv;
 
 public interface MvMapper {
     int deleteByPrimaryKey(Integer mvId);

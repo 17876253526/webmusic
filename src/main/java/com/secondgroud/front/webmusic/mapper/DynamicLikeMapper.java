@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.DynamicLike;
+import com.secondgroud.front.webmusic.entity.DynamicLike;
 
 public interface DynamicLikeMapper {
     int deleteByPrimaryKey(Integer dynamicLikeId);

@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Comment;
+import com.secondgroud.front.webmusic.entity.Comment;
 
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer commentId);

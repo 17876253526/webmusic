@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Focus;
+import com.secondgroud.front.webmusic.entity.Focus;
 
 public interface FocusMapper {
     int deleteByPrimaryKey(Integer focusId);

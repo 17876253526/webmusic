@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.BuyCredit;
+import com.secondgroud.front.webmusic.entity.BuyCredit;
 
 public interface BuyCreditMapper {
     int deleteByPrimaryKey(Integer buyCreditId);

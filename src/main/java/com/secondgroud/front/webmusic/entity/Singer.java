@@ -1,4 +1,4 @@
-package entity;
+package com.secondgroud.front.webmusic.entity;
 
 public class Singer {
     private Integer singId;

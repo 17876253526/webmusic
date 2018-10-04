@@ -1,7 +1,7 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Song;
-import entity.SongWithBLOBs;
+import com.secondgroud.front.webmusic.entity.Song;
+import com.secondgroud.front.webmusic.entity.SongWithBLOBs;
 
 public interface SongMapper {
     int deleteByPrimaryKey(Integer songId);

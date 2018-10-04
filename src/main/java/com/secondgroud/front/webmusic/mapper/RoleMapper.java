@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Role;
+import com.secondgroud.front.webmusic.entity.Role;
 
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer roleId);

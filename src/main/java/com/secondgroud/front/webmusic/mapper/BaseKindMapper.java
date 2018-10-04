@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.BaseKind;
+import com.secondgroud.front.webmusic.entity.BaseKind;
 
 public interface BaseKindMapper {
     int deleteByPrimaryKey(Integer baseKindId);

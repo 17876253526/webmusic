@@ -1,156 +1,78 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.LastSongMapper">
-  <resultMap id="BaseResultMap" type="entity.LastSong">
-    <id column="last_song_id" jdbcType="INTEGER" property="lastSongId" />
-    <result column="last_song_user" jdbcType="INTEGER" property="lastSongUser" />
-    <result column="last_song_song" jdbcType="INTEGER" property="lastSongSong" />
-    <result column="play_time" jdbcType="TIMESTAMP" property="playTime" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.LastSongMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.LastSong" >
+    <id column="last_song_id" property="lastSongId" jdbcType="INTEGER" />
+    <result column="last_song_user" property="lastSongUser" jdbcType="INTEGER" />
+    <result column="last_song_song" property="lastSongSong" jdbcType="INTEGER" />
+    <result column="play_time" property="playTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     last_song_id, last_song_user, last_song_song, play_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from last_song
     where last_song_id = #{lastSongId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from last_song
     where last_song_id = #{lastSongId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.LastSong">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.LastSong" >
     insert into last_song (last_song_id, last_song_user, last_song_song, 
       play_time)
     values (#{lastSongId,jdbcType=INTEGER}, #{lastSongUser,jdbcType=INTEGER}, #{lastSongSong,jdbcType=INTEGER}, 
       #{playTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="entity.LastSong">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.LastSong" >
     insert into last_song
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lastSongId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lastSongId != null" >
         last_song_id,
       </if>
-      <if test="lastSongUser != null">
+      <if test="lastSongUser != null" >
         last_song_user,
       </if>
-      <if test="lastSongSong != null">
+      <if test="lastSongSong != null" >
         last_song_song,
       </if>
-      <if test="playTime != null">
+      <if test="playTime != null" >
         play_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lastSongId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lastSongId != null" >
         #{lastSongId,jdbcType=INTEGER},
       </if>
-      <if test="lastSongUser != null">
+      <if test="lastSongUser != null" >
         #{lastSongUser,jdbcType=INTEGER},
       </if>
-      <if test="lastSongSong != null">
+      <if test="lastSongSong != null" >
         #{lastSongSong,jdbcType=INTEGER},
       </if>
-      <if test="playTime != null">
+      <if test="playTime != null" >
         #{playTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.LastSong">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.LastSong" >
     update last_song
-    <set>
-      <if test="lastSongUser != null">
+    <set >
+      <if test="lastSongUser != null" >
         last_song_user = #{lastSongUser,jdbcType=INTEGER},
       </if>
-      <if test="lastSongSong != null">
+      <if test="lastSongSong != null" >
         last_song_song = #{lastSongSong,jdbcType=INTEGER},
       </if>
-      <if test="playTime != null">
+      <if test="playTime != null" >
         play_time = #{playTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where last_song_id = #{lastSongId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.LastSong">
-    update last_song
-    set last_song_user = #{lastSongUser,jdbcType=INTEGER},
-      last_song_song = #{lastSongSong,jdbcType=INTEGER},
-      play_time = #{playTime,jdbcType=TIMESTAMP}
-    where last_song_id = #{lastSongId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.LastSong">
-    <id column="last_song_id" jdbcType="INTEGER" property="lastSongId" />
-    <result column="last_song_user" jdbcType="INTEGER" property="lastSongUser" />
-    <result column="last_song_song" jdbcType="INTEGER" property="lastSongSong" />
-    <result column="play_time" jdbcType="TIMESTAMP" property="playTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    last_song_id, last_song_user, last_song_song, play_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from last_song
-    where last_song_id = #{lastSongId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from last_song
-    where last_song_id = #{lastSongId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.LastSong">
-    insert into last_song (last_song_id, last_song_user, last_song_song, 
-      play_time)
-    values (#{lastSongId,jdbcType=INTEGER}, #{lastSongUser,jdbcType=INTEGER}, #{lastSongSong,jdbcType=INTEGER}, 
-      #{playTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.LastSong">
-    insert into last_song
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="lastSongId != null">
-        last_song_id,
-      </if>
-      <if test="lastSongUser != null">
-        last_song_user,
-      </if>
-      <if test="lastSongSong != null">
-        last_song_song,
-      </if>
-      <if test="playTime != null">
-        play_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="lastSongId != null">
-        #{lastSongId,jdbcType=INTEGER},
-      </if>
-      <if test="lastSongUser != null">
-        #{lastSongUser,jdbcType=INTEGER},
-      </if>
-      <if test="lastSongSong != null">
-        #{lastSongSong,jdbcType=INTEGER},
-      </if>
-      <if test="playTime != null">
-        #{playTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.LastSong">
-    update last_song
-    <set>
-      <if test="lastSongUser != null">
-        last_song_user = #{lastSongUser,jdbcType=INTEGER},
-      </if>
-      <if test="lastSongSong != null">
-        last_song_song = #{lastSongSong,jdbcType=INTEGER},
-      </if>
-      <if test="playTime != null">
-        play_time = #{playTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where last_song_id = #{lastSongId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.LastSong">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.LastSong" >
     update last_song
     set last_song_user = #{lastSongUser,jdbcType=INTEGER},
       last_song_song = #{lastSongSong,jdbcType=INTEGER},

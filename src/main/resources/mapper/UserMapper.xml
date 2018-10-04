@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="entity.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="TINYINT" property="sex" />
-    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="regist_time" jdbcType="TIME" property="registTime" />
-    <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="regist_time" property="registTime" jdbcType="TIME" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     user_id, name, account, password, sex, birthday, address, introduce, image, regist_time, 
     state, type, email
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.User">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.User" >
     insert into user (user_id, name, account, 
       password, sex, birthday, 
       address, introduce, image, 
@@ -42,502 +42,134 @@
       #{registTime,jdbcType=TIME}, #{state,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
       #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="entity.User">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.User" >
     insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="account != null">
+      <if test="account != null" >
         account,
       </if>
-      <if test="password != null">
+      <if test="password != null" >
         password,
       </if>
-      <if test="sex != null">
+      <if test="sex != null" >
         sex,
       </if>
-      <if test="birthday != null">
+      <if test="birthday != null" >
         birthday,
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         address,
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         introduce,
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image,
       </if>
-      <if test="registTime != null">
+      <if test="registTime != null" >
         regist_time,
       </if>
-      <if test="state != null">
+      <if test="state != null" >
         state,
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type,
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         email,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="account != null">
+      <if test="account != null" >
         #{account,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
+      <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
+      <if test="sex != null" >
         #{sex,jdbcType=TINYINT},
       </if>
-      <if test="birthday != null">
+      <if test="birthday != null" >
         #{birthday,jdbcType=TIMESTAMP},
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         #{introduce,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="registTime != null">
+      <if test="registTime != null" >
         #{registTime,jdbcType=TIME},
       </if>
-      <if test="state != null">
+      <if test="state != null" >
         #{state,jdbcType=TINYINT},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         #{type,jdbcType=TINYINT},
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.User" >
     update user
-    <set>
-      <if test="name != null">
+    <set >
+      <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="account != null">
+      <if test="account != null" >
         account = #{account,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
+      <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
+      <if test="sex != null" >
         sex = #{sex,jdbcType=TINYINT},
       </if>
-      <if test="birthday != null">
+      <if test="birthday != null" >
         birthday = #{birthday,jdbcType=TIMESTAMP},
       </if>
-      <if test="address != null">
+      <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="introduce != null">
+      <if test="introduce != null" >
         introduce = #{introduce,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image = #{image,jdbcType=VARCHAR},
       </if>
-      <if test="registTime != null">
+      <if test="registTime != null" >
         regist_time = #{registTime,jdbcType=TIME},
       </if>
-      <if test="state != null">
+      <if test="state != null" >
         state = #{state,jdbcType=TINYINT},
       </if>
-      <if test="type != null">
+      <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
-      <if test="email != null">
+      <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.User">
-    update user
-    set name = #{name,jdbcType=VARCHAR},
-      account = #{account,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=TINYINT},
-      birthday = #{birthday,jdbcType=TIMESTAMP},
-      address = #{address,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR},
-      image = #{image,jdbcType=VARCHAR},
-      regist_time = #{registTime,jdbcType=TIME},
-      state = #{state,jdbcType=TINYINT},
-      type = #{type,jdbcType=TINYINT},
-      email = #{email,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="TINYINT" property="sex" />
-    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="regist_time" jdbcType="TIME" property="registTime" />
-    <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    user_id, name, account, password, sex, birthday, address, introduce, image, regist_time, 
-    state, type, email
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.User">
-    insert into user (user_id, name, account, 
-      password, sex, birthday, 
-      address, introduce, image, 
-      regist_time, state, type, 
-      email)
-    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{birthday,jdbcType=TIMESTAMP}, 
-      #{address,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
-      #{registTime,jdbcType=TIME}, #{state,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
-      #{email,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="account != null">
-        account,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="sex != null">
-        sex,
-      </if>
-      <if test="birthday != null">
-        birthday,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
-      <if test="image != null">
-        image,
-      </if>
-      <if test="registTime != null">
-        regist_time,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="registTime != null">
-        #{registTime,jdbcType=TIME},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.User">
-    update user
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="registTime != null">
-        regist_time = #{registTime,jdbcType=TIME},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.User">
-    update user
-    set name = #{name,jdbcType=VARCHAR},
-      account = #{account,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=TINYINT},
-      birthday = #{birthday,jdbcType=TIMESTAMP},
-      address = #{address,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=VARCHAR},
-      image = #{image,jdbcType=VARCHAR},
-      regist_time = #{registTime,jdbcType=TIME},
-      state = #{state,jdbcType=TINYINT},
-      type = #{type,jdbcType=TINYINT},
-      email = #{email,jdbcType=VARCHAR}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="TINYINT" property="sex" />
-    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="regist_time" jdbcType="TIME" property="registTime" />
-    <result column="state" jdbcType="TINYINT" property="state" />
-    <result column="type" jdbcType="TINYINT" property="type" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    user_id, name, account, password, sex, birthday, address, introduce, image, regist_time, 
-    state, type, email
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.User">
-    insert into user (user_id, name, account, 
-      password, sex, birthday, 
-      address, introduce, image, 
-      regist_time, state, type, 
-      email)
-    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{birthday,jdbcType=TIMESTAMP}, 
-      #{address,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
-      #{registTime,jdbcType=TIME}, #{state,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, 
-      #{email,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="account != null">
-        account,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="sex != null">
-        sex,
-      </if>
-      <if test="birthday != null">
-        birthday,
-      </if>
-      <if test="address != null">
-        address,
-      </if>
-      <if test="introduce != null">
-        introduce,
-      </if>
-      <if test="image != null">
-        image,
-      </if>
-      <if test="registTime != null">
-        regist_time,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="registTime != null">
-        #{registTime,jdbcType=TIME},
-      </if>
-      <if test="state != null">
-        #{state,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=TINYINT},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.User">
-    update user
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="birthday != null">
-        birthday = #{birthday,jdbcType=TIMESTAMP},
-      </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null">
-        introduce = #{introduce,jdbcType=VARCHAR},
-      </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="registTime != null">
-        regist_time = #{registTime,jdbcType=TIME},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=TINYINT},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=TINYINT},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.User">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.User" >
     update user
     set name = #{name,jdbcType=VARCHAR},
       account = #{account,jdbcType=VARCHAR},

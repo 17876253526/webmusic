@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.DynamicPic;
+import com.secondgroud.front.webmusic.entity.DynamicPic;
 
 public interface DynamicPicMapper {
     int deleteByPrimaryKey(Integer dynamicPicId);

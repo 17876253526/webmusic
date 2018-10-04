@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.AlbumMapper">
-  <resultMap id="BaseResultMap" type="entity.Album">
-    <id column="album_id" jdbcType="INTEGER" property="albumId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
-    <result column="collect_num" jdbcType="BIGINT" property="collectNum" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="album_singer" jdbcType="INTEGER" property="albumSinger" />
-    <result column="album_comment_increase" jdbcType="INTEGER" property="albumCommentIncrease" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.AlbumMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.Album" >
+    <id column="album_id" property="albumId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="collect_num" property="collectNum" jdbcType="BIGINT" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="album_singer" property="albumSinger" jdbcType="INTEGER" />
+    <result column="album_comment_increase" property="albumCommentIncrease" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.Album">
-    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+  <resultMap id="ResultMapWithBLOBs" type="com.secondgroud.front.webmusic.entity.Album" extends="BaseResultMap" >
+    <result column="introduction" property="introduction" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     album_id, name, time, collect_num, image, album_singer, album_comment_increase
   </sql>
-  <sql id="Blob_Column_List">
+  <sql id="Blob_Column_List" >
     introduction
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -27,11 +27,11 @@
     from album
     where album_id = #{albumId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from album
     where album_id = #{albumId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.Album">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.Album" >
     insert into album (album_id, name, time, 
       collect_num, image, album_singer, 
       album_comment_increase, introduction)
@@ -39,89 +39,89 @@
       #{collectNum,jdbcType=BIGINT}, #{image,jdbcType=VARCHAR}, #{albumSinger,jdbcType=INTEGER}, 
       #{albumCommentIncrease,jdbcType=INTEGER}, #{introduction,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="entity.Album">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.Album" >
     insert into album
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="albumId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="albumId != null" >
         album_id,
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         name,
       </if>
-      <if test="time != null">
+      <if test="time != null" >
         time,
       </if>
-      <if test="collectNum != null">
+      <if test="collectNum != null" >
         collect_num,
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image,
       </if>
-      <if test="albumSinger != null">
+      <if test="albumSinger != null" >
         album_singer,
       </if>
-      <if test="albumCommentIncrease != null">
+      <if test="albumCommentIncrease != null" >
         album_comment_increase,
       </if>
-      <if test="introduction != null">
+      <if test="introduction != null" >
         introduction,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="albumId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="albumId != null" >
         #{albumId,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
+      <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="time != null">
+      <if test="time != null" >
         #{time,jdbcType=TIMESTAMP},
       </if>
-      <if test="collectNum != null">
+      <if test="collectNum != null" >
         #{collectNum,jdbcType=BIGINT},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="albumSinger != null">
+      <if test="albumSinger != null" >
         #{albumSinger,jdbcType=INTEGER},
       </if>
-      <if test="albumCommentIncrease != null">
+      <if test="albumCommentIncrease != null" >
         #{albumCommentIncrease,jdbcType=INTEGER},
       </if>
-      <if test="introduction != null">
+      <if test="introduction != null" >
         #{introduction,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.Album">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.Album" >
     update album
-    <set>
-      <if test="name != null">
+    <set >
+      <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="time != null">
+      <if test="time != null" >
         time = #{time,jdbcType=TIMESTAMP},
       </if>
-      <if test="collectNum != null">
+      <if test="collectNum != null" >
         collect_num = #{collectNum,jdbcType=BIGINT},
       </if>
-      <if test="image != null">
+      <if test="image != null" >
         image = #{image,jdbcType=VARCHAR},
       </if>
-      <if test="albumSinger != null">
+      <if test="albumSinger != null" >
         album_singer = #{albumSinger,jdbcType=INTEGER},
       </if>
-      <if test="albumCommentIncrease != null">
+      <if test="albumCommentIncrease != null" >
         album_comment_increase = #{albumCommentIncrease,jdbcType=INTEGER},
       </if>
-      <if test="introduction != null">
+      <if test="introduction != null" >
         introduction = #{introduction,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where album_id = #{albumId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.Album">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.secondgroud.front.webmusic.entity.Album" >
     update album
     set name = #{name,jdbcType=VARCHAR},
       time = #{time,jdbcType=TIMESTAMP},
@@ -132,148 +132,7 @@
       introduction = #{introduction,jdbcType=LONGVARCHAR}
     where album_id = #{albumId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.Album">
-    update album
-    set name = #{name,jdbcType=VARCHAR},
-      time = #{time,jdbcType=TIMESTAMP},
-      collect_num = #{collectNum,jdbcType=BIGINT},
-      image = #{image,jdbcType=VARCHAR},
-      album_singer = #{albumSinger,jdbcType=INTEGER},
-      album_comment_increase = #{albumCommentIncrease,jdbcType=INTEGER}
-    where album_id = #{albumId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.Album">
-    <id column="album_id" jdbcType="INTEGER" property="albumId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="time" jdbcType="TIMESTAMP" property="time" />
-    <result column="collect_num" jdbcType="BIGINT" property="collectNum" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="album_singer" jdbcType="INTEGER" property="albumSinger" />
-    <result column="album_comment_increase" jdbcType="INTEGER" property="albumCommentIncrease" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.Album">
-    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    album_id, name, time, collect_num, image, album_singer, album_comment_increase
-  </sql>
-  <sql id="Blob_Column_List">
-    introduction
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from album
-    where album_id = #{albumId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from album
-    where album_id = #{albumId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.Album">
-    insert into album (album_id, name, time, 
-      collect_num, image, album_singer, 
-      album_comment_increase, introduction)
-    values (#{albumId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
-      #{collectNum,jdbcType=BIGINT}, #{image,jdbcType=VARCHAR}, #{albumSinger,jdbcType=INTEGER}, 
-      #{albumCommentIncrease,jdbcType=INTEGER}, #{introduction,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.Album">
-    insert into album
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="albumId != null">
-        album_id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="time != null">
-        time,
-      </if>
-      <if test="collectNum != null">
-        collect_num,
-      </if>
-      <if test="image != null">
-        image,
-      </if>
-      <if test="albumSinger != null">
-        album_singer,
-      </if>
-      <if test="albumCommentIncrease != null">
-        album_comment_increase,
-      </if>
-      <if test="introduction != null">
-        introduction,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="albumId != null">
-        #{albumId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="time != null">
-        #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="collectNum != null">
-        #{collectNum,jdbcType=BIGINT},
-      </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="albumSinger != null">
-        #{albumSinger,jdbcType=INTEGER},
-      </if>
-      <if test="albumCommentIncrease != null">
-        #{albumCommentIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="introduction != null">
-        #{introduction,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.Album">
-    update album
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="time != null">
-        time = #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="collectNum != null">
-        collect_num = #{collectNum,jdbcType=BIGINT},
-      </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
-      </if>
-      <if test="albumSinger != null">
-        album_singer = #{albumSinger,jdbcType=INTEGER},
-      </if>
-      <if test="albumCommentIncrease != null">
-        album_comment_increase = #{albumCommentIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="introduction != null">
-        introduction = #{introduction,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where album_id = #{albumId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.Album">
-    update album
-    set name = #{name,jdbcType=VARCHAR},
-      time = #{time,jdbcType=TIMESTAMP},
-      collect_num = #{collectNum,jdbcType=BIGINT},
-      image = #{image,jdbcType=VARCHAR},
-      album_singer = #{albumSinger,jdbcType=INTEGER},
-      album_comment_increase = #{albumCommentIncrease,jdbcType=INTEGER},
-      introduction = #{introduction,jdbcType=LONGVARCHAR}
-    where album_id = #{albumId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.Album">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.Album" >
     update album
     set name = #{name,jdbcType=VARCHAR},
       time = #{time,jdbcType=TIMESTAMP},

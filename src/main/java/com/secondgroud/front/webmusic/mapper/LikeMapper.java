@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Like;
+import com.secondgroud.front.webmusic.entity.Like;
 
 public interface LikeMapper {
     int deleteByPrimaryKey(Integer commentLikeId);

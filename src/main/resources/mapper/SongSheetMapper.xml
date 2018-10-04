@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.SongSheetMapper">
-  <resultMap id="BaseResultMap" type="entity.SongSheet">
-    <id column="song_sheet_id" jdbcType="INTEGER" property="songSheetId" />
-    <result column="sheet_name" jdbcType="VARCHAR" property="sheetName" />
-    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="is_private" jdbcType="TINYINT" property="isPrivate" />
-    <result column="playback" jdbcType="BIGINT" property="playback" />
-    <result column="share" jdbcType="BIGINT" property="share" />
-    <result column="collection" jdbcType="BIGINT" property="collection" />
-    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
-    <result column="song_sheet_user" jdbcType="INTEGER" property="songSheetUser" />
-    <result column="song_sheet_king_increase" jdbcType="INTEGER" property="songSheetKingIncrease" />
-    <result column="song_sheet_comment_increase" jdbcType="INTEGER" property="songSheetCommentIncrease" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.SongSheetMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.SongSheet" >
+    <id column="song_sheet_id" property="songSheetId" jdbcType="INTEGER" />
+    <result column="sheet_name" property="sheetName" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="is_private" property="isPrivate" jdbcType="TINYINT" />
+    <result column="playback" property="playback" jdbcType="BIGINT" />
+    <result column="share" property="share" jdbcType="BIGINT" />
+    <result column="collection" property="collection" jdbcType="BIGINT" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="song_sheet_user" property="songSheetUser" jdbcType="INTEGER" />
+    <result column="song_sheet_king_increase" property="songSheetKingIncrease" jdbcType="INTEGER" />
+    <result column="song_sheet_comment_increase" property="songSheetCommentIncrease" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.SongSheet">
-    <result column="note" jdbcType="LONGVARCHAR" property="note" />
+  <resultMap id="ResultMapWithBLOBs" type="com.secondgroud.front.webmusic.entity.SongSheet" extends="BaseResultMap" >
+    <result column="note" property="note" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     song_sheet_id, sheet_name, createtime, is_private, playback, share, collection, pic_url, 
     song_sheet_user, song_sheet_king_increase, song_sheet_comment_increase
   </sql>
-  <sql id="Blob_Column_List">
+  <sql id="Blob_Column_List" >
     note
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -32,11 +32,11 @@
     from song_sheet
     where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from song_sheet
     where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.SongSheet">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.SongSheet" >
     insert into song_sheet (song_sheet_id, sheet_name, createtime, 
       is_private, playback, share, 
       collection, pic_url, song_sheet_user, 
@@ -48,125 +48,125 @@
       #{songSheetKingIncrease,jdbcType=INTEGER}, #{songSheetCommentIncrease,jdbcType=INTEGER}, 
       #{note,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="entity.SongSheet">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.SongSheet" >
     insert into song_sheet
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="songSheetId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="songSheetId != null" >
         song_sheet_id,
       </if>
-      <if test="sheetName != null">
+      <if test="sheetName != null" >
         sheet_name,
       </if>
-      <if test="createtime != null">
+      <if test="createtime != null" >
         createtime,
       </if>
-      <if test="isPrivate != null">
+      <if test="isPrivate != null" >
         is_private,
       </if>
-      <if test="playback != null">
+      <if test="playback != null" >
         playback,
       </if>
-      <if test="share != null">
+      <if test="share != null" >
         share,
       </if>
-      <if test="collection != null">
+      <if test="collection != null" >
         collection,
       </if>
-      <if test="picUrl != null">
+      <if test="picUrl != null" >
         pic_url,
       </if>
-      <if test="songSheetUser != null">
+      <if test="songSheetUser != null" >
         song_sheet_user,
       </if>
-      <if test="songSheetKingIncrease != null">
+      <if test="songSheetKingIncrease != null" >
         song_sheet_king_increase,
       </if>
-      <if test="songSheetCommentIncrease != null">
+      <if test="songSheetCommentIncrease != null" >
         song_sheet_comment_increase,
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         note,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="songSheetId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="songSheetId != null" >
         #{songSheetId,jdbcType=INTEGER},
       </if>
-      <if test="sheetName != null">
+      <if test="sheetName != null" >
         #{sheetName,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
+      <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isPrivate != null">
+      <if test="isPrivate != null" >
         #{isPrivate,jdbcType=TINYINT},
       </if>
-      <if test="playback != null">
+      <if test="playback != null" >
         #{playback,jdbcType=BIGINT},
       </if>
-      <if test="share != null">
+      <if test="share != null" >
         #{share,jdbcType=BIGINT},
       </if>
-      <if test="collection != null">
+      <if test="collection != null" >
         #{collection,jdbcType=BIGINT},
       </if>
-      <if test="picUrl != null">
+      <if test="picUrl != null" >
         #{picUrl,jdbcType=VARCHAR},
       </if>
-      <if test="songSheetUser != null">
+      <if test="songSheetUser != null" >
         #{songSheetUser,jdbcType=INTEGER},
       </if>
-      <if test="songSheetKingIncrease != null">
+      <if test="songSheetKingIncrease != null" >
         #{songSheetKingIncrease,jdbcType=INTEGER},
       </if>
-      <if test="songSheetCommentIncrease != null">
+      <if test="songSheetCommentIncrease != null" >
         #{songSheetCommentIncrease,jdbcType=INTEGER},
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         #{note,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.SongSheet">
+  <update id="updateByPrimaryKeySelective" parameterType="com.secondgroud.front.webmusic.entity.SongSheet" >
     update song_sheet
-    <set>
-      <if test="sheetName != null">
+    <set >
+      <if test="sheetName != null" >
         sheet_name = #{sheetName,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null">
+      <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isPrivate != null">
+      <if test="isPrivate != null" >
         is_private = #{isPrivate,jdbcType=TINYINT},
       </if>
-      <if test="playback != null">
+      <if test="playback != null" >
         playback = #{playback,jdbcType=BIGINT},
       </if>
-      <if test="share != null">
+      <if test="share != null" >
         share = #{share,jdbcType=BIGINT},
       </if>
-      <if test="collection != null">
+      <if test="collection != null" >
         collection = #{collection,jdbcType=BIGINT},
       </if>
-      <if test="picUrl != null">
+      <if test="picUrl != null" >
         pic_url = #{picUrl,jdbcType=VARCHAR},
       </if>
-      <if test="songSheetUser != null">
+      <if test="songSheetUser != null" >
         song_sheet_user = #{songSheetUser,jdbcType=INTEGER},
       </if>
-      <if test="songSheetKingIncrease != null">
+      <if test="songSheetKingIncrease != null" >
         song_sheet_king_increase = #{songSheetKingIncrease,jdbcType=INTEGER},
       </if>
-      <if test="songSheetCommentIncrease != null">
+      <if test="songSheetCommentIncrease != null" >
         song_sheet_comment_increase = #{songSheetCommentIncrease,jdbcType=INTEGER},
       </if>
-      <if test="note != null">
+      <if test="note != null" >
         note = #{note,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.SongSheet">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.secondgroud.front.webmusic.entity.SongSheet" >
     update song_sheet
     set sheet_name = #{sheetName,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -181,201 +181,7 @@
       note = #{note,jdbcType=LONGVARCHAR}
     where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="entity.SongSheet">
-    update song_sheet
-    set sheet_name = #{sheetName,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      is_private = #{isPrivate,jdbcType=TINYINT},
-      playback = #{playback,jdbcType=BIGINT},
-      share = #{share,jdbcType=BIGINT},
-      collection = #{collection,jdbcType=BIGINT},
-      pic_url = #{picUrl,jdbcType=VARCHAR},
-      song_sheet_user = #{songSheetUser,jdbcType=INTEGER},
-      song_sheet_king_increase = #{songSheetKingIncrease,jdbcType=INTEGER},
-      song_sheet_comment_increase = #{songSheetCommentIncrease,jdbcType=INTEGER}
-    where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="entity.SongSheet">
-    <id column="song_sheet_id" jdbcType="INTEGER" property="songSheetId" />
-    <result column="sheet_name" jdbcType="VARCHAR" property="sheetName" />
-    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="is_private" jdbcType="TINYINT" property="isPrivate" />
-    <result column="playback" jdbcType="BIGINT" property="playback" />
-    <result column="share" jdbcType="BIGINT" property="share" />
-    <result column="collection" jdbcType="BIGINT" property="collection" />
-    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
-    <result column="song_sheet_user" jdbcType="INTEGER" property="songSheetUser" />
-    <result column="song_sheet_king_increase" jdbcType="INTEGER" property="songSheetKingIncrease" />
-    <result column="song_sheet_comment_increase" jdbcType="INTEGER" property="songSheetCommentIncrease" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.SongSheet">
-    <result column="note" jdbcType="LONGVARCHAR" property="note" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    song_sheet_id, sheet_name, createtime, is_private, playback, share, collection, pic_url, 
-    song_sheet_user, song_sheet_king_increase, song_sheet_comment_increase
-  </sql>
-  <sql id="Blob_Column_List">
-    note
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from song_sheet
-    where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from song_sheet
-    where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.SongSheet">
-    insert into song_sheet (song_sheet_id, sheet_name, createtime, 
-      is_private, playback, share, 
-      collection, pic_url, song_sheet_user, 
-      song_sheet_king_increase, song_sheet_comment_increase, 
-      note)
-    values (#{songSheetId,jdbcType=INTEGER}, #{sheetName,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{isPrivate,jdbcType=TINYINT}, #{playback,jdbcType=BIGINT}, #{share,jdbcType=BIGINT}, 
-      #{collection,jdbcType=BIGINT}, #{picUrl,jdbcType=VARCHAR}, #{songSheetUser,jdbcType=INTEGER}, 
-      #{songSheetKingIncrease,jdbcType=INTEGER}, #{songSheetCommentIncrease,jdbcType=INTEGER}, 
-      #{note,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.SongSheet">
-    insert into song_sheet
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="songSheetId != null">
-        song_sheet_id,
-      </if>
-      <if test="sheetName != null">
-        sheet_name,
-      </if>
-      <if test="createtime != null">
-        createtime,
-      </if>
-      <if test="isPrivate != null">
-        is_private,
-      </if>
-      <if test="playback != null">
-        playback,
-      </if>
-      <if test="share != null">
-        share,
-      </if>
-      <if test="collection != null">
-        collection,
-      </if>
-      <if test="picUrl != null">
-        pic_url,
-      </if>
-      <if test="songSheetUser != null">
-        song_sheet_user,
-      </if>
-      <if test="songSheetKingIncrease != null">
-        song_sheet_king_increase,
-      </if>
-      <if test="songSheetCommentIncrease != null">
-        song_sheet_comment_increase,
-      </if>
-      <if test="note != null">
-        note,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="songSheetId != null">
-        #{songSheetId,jdbcType=INTEGER},
-      </if>
-      <if test="sheetName != null">
-        #{sheetName,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isPrivate != null">
-        #{isPrivate,jdbcType=TINYINT},
-      </if>
-      <if test="playback != null">
-        #{playback,jdbcType=BIGINT},
-      </if>
-      <if test="share != null">
-        #{share,jdbcType=BIGINT},
-      </if>
-      <if test="collection != null">
-        #{collection,jdbcType=BIGINT},
-      </if>
-      <if test="picUrl != null">
-        #{picUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="songSheetUser != null">
-        #{songSheetUser,jdbcType=INTEGER},
-      </if>
-      <if test="songSheetKingIncrease != null">
-        #{songSheetKingIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="songSheetCommentIncrease != null">
-        #{songSheetCommentIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="note != null">
-        #{note,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="entity.SongSheet">
-    update song_sheet
-    <set>
-      <if test="sheetName != null">
-        sheet_name = #{sheetName,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isPrivate != null">
-        is_private = #{isPrivate,jdbcType=TINYINT},
-      </if>
-      <if test="playback != null">
-        playback = #{playback,jdbcType=BIGINT},
-      </if>
-      <if test="share != null">
-        share = #{share,jdbcType=BIGINT},
-      </if>
-      <if test="collection != null">
-        collection = #{collection,jdbcType=BIGINT},
-      </if>
-      <if test="picUrl != null">
-        pic_url = #{picUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="songSheetUser != null">
-        song_sheet_user = #{songSheetUser,jdbcType=INTEGER},
-      </if>
-      <if test="songSheetKingIncrease != null">
-        song_sheet_king_increase = #{songSheetKingIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="songSheetCommentIncrease != null">
-        song_sheet_comment_increase = #{songSheetCommentIncrease,jdbcType=INTEGER},
-      </if>
-      <if test="note != null">
-        note = #{note,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.SongSheet">
-    update song_sheet
-    set sheet_name = #{sheetName,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      is_private = #{isPrivate,jdbcType=TINYINT},
-      playback = #{playback,jdbcType=BIGINT},
-      share = #{share,jdbcType=BIGINT},
-      collection = #{collection,jdbcType=BIGINT},
-      pic_url = #{picUrl,jdbcType=VARCHAR},
-      song_sheet_user = #{songSheetUser,jdbcType=INTEGER},
-      song_sheet_king_increase = #{songSheetKingIncrease,jdbcType=INTEGER},
-      song_sheet_comment_increase = #{songSheetCommentIncrease,jdbcType=INTEGER},
-      note = #{note,jdbcType=LONGVARCHAR}
-    where song_sheet_id = #{songSheetId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="entity.SongSheet">
+  <update id="updateByPrimaryKey" parameterType="com.secondgroud.front.webmusic.entity.SongSheet" >
     update song_sheet
     set sheet_name = #{sheetName,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},

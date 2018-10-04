@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Permission;
+import com.secondgroud.front.webmusic.entity.Permission;
 
 public interface PermissionMapper {
     int deleteByPrimaryKey(Integer permissionId);

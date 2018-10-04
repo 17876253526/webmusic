@@ -1,50 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.CommentIncreaseMapper">
-  <resultMap id="BaseResultMap" type="entity.CommentIncrease">
-    <id column="comment_increase_id" jdbcType="INTEGER" property="commentIncreaseId" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.secondgroud.front.webmusic.mapper.CommentIncreaseMapper" >
+  <resultMap id="BaseResultMap" type="com.secondgroud.front.webmusic.entity.CommentIncrease" >
+    <id column="comment_increase_id" property="commentIncreaseId" jdbcType="INTEGER" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from comment_increase
     where comment_increase_id = #{commentIncreaseId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="entity.CommentIncrease">
+  <insert id="insert" parameterType="com.secondgroud.front.webmusic.entity.CommentIncrease" >
     insert into comment_increase (comment_increase_id)
     values (#{commentIncreaseId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="entity.CommentIncrease">
+  <insert id="insertSelective" parameterType="com.secondgroud.front.webmusic.entity.CommentIncrease" >
     insert into comment_increase
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commentIncreaseId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentIncreaseId != null" >
         comment_increase_id,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commentIncreaseId != null">
-        #{commentIncreaseId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <resultMap id="BaseResultMap" type="entity.CommentIncrease">
-    <id column="comment_increase_id" jdbcType="INTEGER" property="commentIncreaseId" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from comment_increase
-    where comment_increase_id = #{commentIncreaseId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="entity.CommentIncrease">
-    insert into comment_increase (comment_increase_id)
-    values (#{commentIncreaseId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="entity.CommentIncrease">
-    insert into comment_increase
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="commentIncreaseId != null">
-        comment_increase_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="commentIncreaseId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentIncreaseId != null" >
         #{commentIncreaseId,jdbcType=INTEGER},
       </if>
     </trim>

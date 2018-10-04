@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.UserInfo;
+import com.secondgroud.front.webmusic.entity.UserInfo;
 
 public interface UserInfoMapper {
     int deleteByPrimaryKey(Integer userinfoId);

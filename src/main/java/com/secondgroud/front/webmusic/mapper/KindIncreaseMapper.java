@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.KindIncrease;
+import com.secondgroud.front.webmusic.entity.KindIncrease;
 
 public interface KindIncreaseMapper {
     int deleteByPrimaryKey(Integer kindIncreaseId);

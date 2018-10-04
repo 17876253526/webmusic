@@ -1,6 +1,6 @@
-package mapper;
+package com.secondgroud.front.webmusic.mapper;
 
-import entity.Download;
+import com.secondgroud.front.webmusic.entity.Download;
 
 public interface DownloadMapper {
     int deleteByPrimaryKey(Integer downloadId);
