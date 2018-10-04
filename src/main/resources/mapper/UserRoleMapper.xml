@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="entity.UserRole">
+    <id column="user_role_id" jdbcType="INTEGER" property="userRoleId" />
+    <result column="user_role_user" jdbcType="INTEGER" property="userRoleUser" />
+    <result column="user_role_role" jdbcType="INTEGER" property="userRoleRole" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_role_id, user_role_user, user_role_role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.UserRole">
+    insert into user_role (user_role_id, user_role_user, user_role_role
+      )
+    values (#{userRoleId,jdbcType=INTEGER}, #{userRoleUser,jdbcType=INTEGER}, #{userRoleRole,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        user_role_id,
+      </if>
+      <if test="userRoleUser != null">
+        user_role_user,
+      </if>
+      <if test="userRoleRole != null">
+        user_role_role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        #{userRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleUser != null">
+        #{userRoleUser,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleRole != null">
+        #{userRoleRole,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.UserRole">
+    update user_role
+    <set>
+      <if test="userRoleUser != null">
+        user_role_user = #{userRoleUser,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleRole != null">
+        user_role_role = #{userRoleRole,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.UserRole">
+    update user_role
+    set user_role_user = #{userRoleUser,jdbcType=INTEGER},
+      user_role_role = #{userRoleRole,jdbcType=INTEGER}
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.UserRole">
+    <id column="user_role_id" jdbcType="INTEGER" property="userRoleId" />
+    <result column="user_role_user" jdbcType="INTEGER" property="userRoleUser" />
+    <result column="user_role_role" jdbcType="INTEGER" property="userRoleRole" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_role_id, user_role_user, user_role_role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_role
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.UserRole">
+    insert into user_role (user_role_id, user_role_user, user_role_role
+      )
+    values (#{userRoleId,jdbcType=INTEGER}, #{userRoleUser,jdbcType=INTEGER}, #{userRoleRole,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        user_role_id,
+      </if>
+      <if test="userRoleUser != null">
+        user_role_user,
+      </if>
+      <if test="userRoleRole != null">
+        user_role_role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        #{userRoleId,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleUser != null">
+        #{userRoleUser,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleRole != null">
+        #{userRoleRole,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.UserRole">
+    update user_role
+    <set>
+      <if test="userRoleUser != null">
+        user_role_user = #{userRoleUser,jdbcType=INTEGER},
+      </if>
+      <if test="userRoleRole != null">
+        user_role_role = #{userRoleRole,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.UserRole">
+    update user_role
+    set user_role_user = #{userRoleUser,jdbcType=INTEGER},
+      user_role_role = #{userRoleRole,jdbcType=INTEGER}
+    where user_role_id = #{userRoleId,jdbcType=INTEGER}
+  </update>
+</mapper>

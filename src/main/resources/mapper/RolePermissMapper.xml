@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RolePermissMapper">
+  <resultMap id="BaseResultMap" type="entity.RolePermiss">
+    <id column="role_permiss_id" jdbcType="INTEGER" property="rolePermissId" />
+    <result column="role_permiss_role" jdbcType="INTEGER" property="rolePermissRole" />
+    <result column="role_permiss_permiss" jdbcType="INTEGER" property="rolePermissPermiss" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_permiss_id, role_permiss_role, role_permiss_permiss
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_permiss
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_permiss
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.RolePermiss">
+    insert into role_permiss (role_permiss_id, role_permiss_role, role_permiss_permiss
+      )
+    values (#{rolePermissId,jdbcType=INTEGER}, #{rolePermissRole,jdbcType=INTEGER}, #{rolePermissPermiss,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.RolePermiss">
+    insert into role_permiss
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolePermissId != null">
+        role_permiss_id,
+      </if>
+      <if test="rolePermissRole != null">
+        role_permiss_role,
+      </if>
+      <if test="rolePermissPermiss != null">
+        role_permiss_permiss,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolePermissId != null">
+        #{rolePermissId,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissRole != null">
+        #{rolePermissRole,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissPermiss != null">
+        #{rolePermissPermiss,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.RolePermiss">
+    update role_permiss
+    <set>
+      <if test="rolePermissRole != null">
+        role_permiss_role = #{rolePermissRole,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissPermiss != null">
+        role_permiss_permiss = #{rolePermissPermiss,jdbcType=INTEGER},
+      </if>
+    </set>
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.RolePermiss">
+    update role_permiss
+    set role_permiss_role = #{rolePermissRole,jdbcType=INTEGER},
+      role_permiss_permiss = #{rolePermissPermiss,jdbcType=INTEGER}
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.RolePermiss">
+    <id column="role_permiss_id" jdbcType="INTEGER" property="rolePermissId" />
+    <result column="role_permiss_role" jdbcType="INTEGER" property="rolePermissRole" />
+    <result column="role_permiss_permiss" jdbcType="INTEGER" property="rolePermissPermiss" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_permiss_id, role_permiss_role, role_permiss_permiss
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role_permiss
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role_permiss
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.RolePermiss">
+    insert into role_permiss (role_permiss_id, role_permiss_role, role_permiss_permiss
+      )
+    values (#{rolePermissId,jdbcType=INTEGER}, #{rolePermissRole,jdbcType=INTEGER}, #{rolePermissPermiss,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.RolePermiss">
+    insert into role_permiss
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolePermissId != null">
+        role_permiss_id,
+      </if>
+      <if test="rolePermissRole != null">
+        role_permiss_role,
+      </if>
+      <if test="rolePermissPermiss != null">
+        role_permiss_permiss,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolePermissId != null">
+        #{rolePermissId,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissRole != null">
+        #{rolePermissRole,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissPermiss != null">
+        #{rolePermissPermiss,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.RolePermiss">
+    update role_permiss
+    <set>
+      <if test="rolePermissRole != null">
+        role_permiss_role = #{rolePermissRole,jdbcType=INTEGER},
+      </if>
+      <if test="rolePermissPermiss != null">
+        role_permiss_permiss = #{rolePermissPermiss,jdbcType=INTEGER},
+      </if>
+    </set>
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.RolePermiss">
+    update role_permiss
+    set role_permiss_role = #{rolePermissRole,jdbcType=INTEGER},
+      role_permiss_permiss = #{rolePermissPermiss,jdbcType=INTEGER}
+    where role_permiss_id = #{rolePermissId,jdbcType=INTEGER}
+  </update>
+</mapper>

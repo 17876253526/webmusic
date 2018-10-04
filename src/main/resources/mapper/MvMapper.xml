@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MvMapper">
+  <resultMap id="BaseResultMap" type="entity.Mv">
+    <id column="mv_id" jdbcType="INTEGER" property="mvId" />
+    <result column="uploadtime" jdbcType="TIMESTAMP" property="uploadtime" />
+    <result column="playback" jdbcType="BIGINT" property="playback" />
+    <result column="collection" jdbcType="BIGINT" property="collection" />
+    <result column="download" jdbcType="BIGINT" property="download" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="mv_pic_url" jdbcType="VARCHAR" property="mvPicUrl" />
+    <result column="mv_song" jdbcType="INTEGER" property="mvSong" />
+    <result column="mv_kind_increase" jdbcType="INTEGER" property="mvKindIncrease" />
+    <result column="mv_comment_increase" jdbcType="INTEGER" property="mvCommentIncrease" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mv_id, uploadtime, playback, collection, download, integral, mv_pic_url, mv_song, 
+    mv_kind_increase, mv_comment_increase
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mv
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mv
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Mv">
+    insert into mv (mv_id, uploadtime, playback, 
+      collection, download, integral, 
+      mv_pic_url, mv_song, mv_kind_increase, 
+      mv_comment_increase)
+    values (#{mvId,jdbcType=INTEGER}, #{uploadtime,jdbcType=TIMESTAMP}, #{playback,jdbcType=BIGINT}, 
+      #{collection,jdbcType=BIGINT}, #{download,jdbcType=BIGINT}, #{integral,jdbcType=INTEGER}, 
+      #{mvPicUrl,jdbcType=VARCHAR}, #{mvSong,jdbcType=INTEGER}, #{mvKindIncrease,jdbcType=INTEGER}, 
+      #{mvCommentIncrease,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.Mv">
+    insert into mv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mvId != null">
+        mv_id,
+      </if>
+      <if test="uploadtime != null">
+        uploadtime,
+      </if>
+      <if test="playback != null">
+        playback,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+      <if test="download != null">
+        download,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="mvPicUrl != null">
+        mv_pic_url,
+      </if>
+      <if test="mvSong != null">
+        mv_song,
+      </if>
+      <if test="mvKindIncrease != null">
+        mv_kind_increase,
+      </if>
+      <if test="mvCommentIncrease != null">
+        mv_comment_increase,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mvId != null">
+        #{mvId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playback != null">
+        #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="download != null">
+        #{download,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="mvPicUrl != null">
+        #{mvPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mvSong != null">
+        #{mvSong,jdbcType=INTEGER},
+      </if>
+      <if test="mvKindIncrease != null">
+        #{mvKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="mvCommentIncrease != null">
+        #{mvCommentIncrease,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Mv">
+    update mv
+    <set>
+      <if test="uploadtime != null">
+        uploadtime = #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playback != null">
+        playback = #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="download != null">
+        download = #{download,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="mvPicUrl != null">
+        mv_pic_url = #{mvPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mvSong != null">
+        mv_song = #{mvSong,jdbcType=INTEGER},
+      </if>
+      <if test="mvKindIncrease != null">
+        mv_kind_increase = #{mvKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="mvCommentIncrease != null">
+        mv_comment_increase = #{mvCommentIncrease,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Mv">
+    update mv
+    set uploadtime = #{uploadtime,jdbcType=TIMESTAMP},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      download = #{download,jdbcType=BIGINT},
+      integral = #{integral,jdbcType=INTEGER},
+      mv_pic_url = #{mvPicUrl,jdbcType=VARCHAR},
+      mv_song = #{mvSong,jdbcType=INTEGER},
+      mv_kind_increase = #{mvKindIncrease,jdbcType=INTEGER},
+      mv_comment_increase = #{mvCommentIncrease,jdbcType=INTEGER}
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.Mv">
+    <id column="mv_id" jdbcType="INTEGER" property="mvId" />
+    <result column="uploadtime" jdbcType="TIMESTAMP" property="uploadtime" />
+    <result column="playback" jdbcType="BIGINT" property="playback" />
+    <result column="collection" jdbcType="BIGINT" property="collection" />
+    <result column="download" jdbcType="BIGINT" property="download" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="mv_pic_url" jdbcType="VARCHAR" property="mvPicUrl" />
+    <result column="mv_song" jdbcType="INTEGER" property="mvSong" />
+    <result column="mv_kind_increase" jdbcType="INTEGER" property="mvKindIncrease" />
+    <result column="mv_comment_increase" jdbcType="INTEGER" property="mvCommentIncrease" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mv_id, uploadtime, playback, collection, download, integral, mv_pic_url, mv_song, 
+    mv_kind_increase, mv_comment_increase
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mv
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mv
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Mv">
+    insert into mv (mv_id, uploadtime, playback, 
+      collection, download, integral, 
+      mv_pic_url, mv_song, mv_kind_increase, 
+      mv_comment_increase)
+    values (#{mvId,jdbcType=INTEGER}, #{uploadtime,jdbcType=TIMESTAMP}, #{playback,jdbcType=BIGINT}, 
+      #{collection,jdbcType=BIGINT}, #{download,jdbcType=BIGINT}, #{integral,jdbcType=INTEGER}, 
+      #{mvPicUrl,jdbcType=VARCHAR}, #{mvSong,jdbcType=INTEGER}, #{mvKindIncrease,jdbcType=INTEGER}, 
+      #{mvCommentIncrease,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.Mv">
+    insert into mv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mvId != null">
+        mv_id,
+      </if>
+      <if test="uploadtime != null">
+        uploadtime,
+      </if>
+      <if test="playback != null">
+        playback,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+      <if test="download != null">
+        download,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="mvPicUrl != null">
+        mv_pic_url,
+      </if>
+      <if test="mvSong != null">
+        mv_song,
+      </if>
+      <if test="mvKindIncrease != null">
+        mv_kind_increase,
+      </if>
+      <if test="mvCommentIncrease != null">
+        mv_comment_increase,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mvId != null">
+        #{mvId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadtime != null">
+        #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playback != null">
+        #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="download != null">
+        #{download,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="mvPicUrl != null">
+        #{mvPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mvSong != null">
+        #{mvSong,jdbcType=INTEGER},
+      </if>
+      <if test="mvKindIncrease != null">
+        #{mvKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="mvCommentIncrease != null">
+        #{mvCommentIncrease,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Mv">
+    update mv
+    <set>
+      <if test="uploadtime != null">
+        uploadtime = #{uploadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="playback != null">
+        playback = #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="download != null">
+        download = #{download,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="mvPicUrl != null">
+        mv_pic_url = #{mvPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mvSong != null">
+        mv_song = #{mvSong,jdbcType=INTEGER},
+      </if>
+      <if test="mvKindIncrease != null">
+        mv_kind_increase = #{mvKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="mvCommentIncrease != null">
+        mv_comment_increase = #{mvCommentIncrease,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Mv">
+    update mv
+    set uploadtime = #{uploadtime,jdbcType=TIMESTAMP},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      download = #{download,jdbcType=BIGINT},
+      integral = #{integral,jdbcType=INTEGER},
+      mv_pic_url = #{mvPicUrl,jdbcType=VARCHAR},
+      mv_song = #{mvSong,jdbcType=INTEGER},
+      mv_kind_increase = #{mvKindIncrease,jdbcType=INTEGER},
+      mv_comment_increase = #{mvCommentIncrease,jdbcType=INTEGER}
+    where mv_id = #{mvId,jdbcType=INTEGER}
+  </update>
+</mapper>

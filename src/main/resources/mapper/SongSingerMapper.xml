@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SongSingerMapper">
+  <resultMap id="BaseResultMap" type="entity.SongSinger">
+    <id column="song_singer_id" jdbcType="INTEGER" property="songSingerId" />
+    <result column="song_singer_song" jdbcType="INTEGER" property="songSingerSong" />
+    <result column="song_singer_singer" jdbcType="INTEGER" property="songSingerSinger" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    song_singer_id, song_singer_song, song_singer_singer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from song_singer
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from song_singer
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.SongSinger">
+    insert into song_singer (song_singer_id, song_singer_song, song_singer_singer
+      )
+    values (#{songSingerId,jdbcType=INTEGER}, #{songSingerSong,jdbcType=INTEGER}, #{songSingerSinger,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.SongSinger">
+    insert into song_singer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="songSingerId != null">
+        song_singer_id,
+      </if>
+      <if test="songSingerSong != null">
+        song_singer_song,
+      </if>
+      <if test="songSingerSinger != null">
+        song_singer_singer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="songSingerId != null">
+        #{songSingerId,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSong != null">
+        #{songSingerSong,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSinger != null">
+        #{songSingerSinger,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.SongSinger">
+    update song_singer
+    <set>
+      <if test="songSingerSong != null">
+        song_singer_song = #{songSingerSong,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSinger != null">
+        song_singer_singer = #{songSingerSinger,jdbcType=INTEGER},
+      </if>
+    </set>
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.SongSinger">
+    update song_singer
+    set song_singer_song = #{songSingerSong,jdbcType=INTEGER},
+      song_singer_singer = #{songSingerSinger,jdbcType=INTEGER}
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.SongSinger">
+    <id column="song_singer_id" jdbcType="INTEGER" property="songSingerId" />
+    <result column="song_singer_song" jdbcType="INTEGER" property="songSingerSong" />
+    <result column="song_singer_singer" jdbcType="INTEGER" property="songSingerSinger" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    song_singer_id, song_singer_song, song_singer_singer
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from song_singer
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from song_singer
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.SongSinger">
+    insert into song_singer (song_singer_id, song_singer_song, song_singer_singer
+      )
+    values (#{songSingerId,jdbcType=INTEGER}, #{songSingerSong,jdbcType=INTEGER}, #{songSingerSinger,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.SongSinger">
+    insert into song_singer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="songSingerId != null">
+        song_singer_id,
+      </if>
+      <if test="songSingerSong != null">
+        song_singer_song,
+      </if>
+      <if test="songSingerSinger != null">
+        song_singer_singer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="songSingerId != null">
+        #{songSingerId,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSong != null">
+        #{songSingerSong,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSinger != null">
+        #{songSingerSinger,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.SongSinger">
+    update song_singer
+    <set>
+      <if test="songSingerSong != null">
+        song_singer_song = #{songSingerSong,jdbcType=INTEGER},
+      </if>
+      <if test="songSingerSinger != null">
+        song_singer_singer = #{songSingerSinger,jdbcType=INTEGER},
+      </if>
+    </set>
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.SongSinger">
+    update song_singer
+    set song_singer_song = #{songSingerSong,jdbcType=INTEGER},
+      song_singer_singer = #{songSingerSinger,jdbcType=INTEGER}
+    where song_singer_id = #{songSingerId,jdbcType=INTEGER}
+  </update>
+</mapper>

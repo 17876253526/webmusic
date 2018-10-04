@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="entity.Comment">
+    <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="comment_user" jdbcType="INTEGER" property="commentUser" />
+    <result column="comment_comment_increase" jdbcType="INTEGER" property="commentCommentIncrease" />
+    <result column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="comment_like_increase" jdbcType="INTEGER" property="commentLikeIncrease" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.Comment">
+    <result column="comment_content" jdbcType="LONGVARCHAR" property="commentContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    comment_id, comment_time, comment_user, comment_comment_increase, reply_id, comment_like_increase
+  </sql>
+  <sql id="Blob_Column_List">
+    comment_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Comment">
+    insert into comment (comment_id, comment_time, comment_user, 
+      comment_comment_increase, reply_id, comment_like_increase, 
+      comment_content)
+    values (#{commentId,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, #{commentUser,jdbcType=INTEGER}, 
+      #{commentCommentIncrease,jdbcType=INTEGER}, #{replyId,jdbcType=INTEGER}, #{commentLikeIncrease,jdbcType=INTEGER}, 
+      #{commentContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+      <if test="commentUser != null">
+        comment_user,
+      </if>
+      <if test="commentCommentIncrease != null">
+        comment_comment_increase,
+      </if>
+      <if test="replyId != null">
+        reply_id,
+      </if>
+      <if test="commentLikeIncrease != null">
+        comment_like_increase,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null">
+        #{commentUser,jdbcType=INTEGER},
+      </if>
+      <if test="commentCommentIncrease != null">
+        #{commentCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLikeIncrease != null">
+        #{commentLikeIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Comment">
+    update comment
+    <set>
+      <if test="commentTime != null">
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null">
+        comment_user = #{commentUser,jdbcType=INTEGER},
+      </if>
+      <if test="commentCommentIncrease != null">
+        comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        reply_id = #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLikeIncrease != null">
+        comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.Comment">
+    update comment
+    set comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{commentUser,jdbcType=INTEGER},
+      comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER},
+      comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Comment">
+    update comment
+    set comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{commentUser,jdbcType=INTEGER},
+      comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.Comment">
+    <id column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="comment_user" jdbcType="INTEGER" property="commentUser" />
+    <result column="comment_comment_increase" jdbcType="INTEGER" property="commentCommentIncrease" />
+    <result column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="comment_like_increase" jdbcType="INTEGER" property="commentLikeIncrease" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.Comment">
+    <result column="comment_content" jdbcType="LONGVARCHAR" property="commentContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    comment_id, comment_time, comment_user, comment_comment_increase, reply_id, comment_like_increase
+  </sql>
+  <sql id="Blob_Column_List">
+    comment_content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.Comment">
+    insert into comment (comment_id, comment_time, comment_user, 
+      comment_comment_increase, reply_id, comment_like_increase, 
+      comment_content)
+    values (#{commentId,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, #{commentUser,jdbcType=INTEGER}, 
+      #{commentCommentIncrease,jdbcType=INTEGER}, #{replyId,jdbcType=INTEGER}, #{commentLikeIncrease,jdbcType=INTEGER}, 
+      #{commentContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.Comment">
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+      <if test="commentUser != null">
+        comment_user,
+      </if>
+      <if test="commentCommentIncrease != null">
+        comment_comment_increase,
+      </if>
+      <if test="replyId != null">
+        reply_id,
+      </if>
+      <if test="commentLikeIncrease != null">
+        comment_like_increase,
+      </if>
+      <if test="commentContent != null">
+        comment_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null">
+        #{commentUser,jdbcType=INTEGER},
+      </if>
+      <if test="commentCommentIncrease != null">
+        #{commentCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLikeIncrease != null">
+        #{commentLikeIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Comment">
+    update comment
+    <set>
+      <if test="commentTime != null">
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentUser != null">
+        comment_user = #{commentUser,jdbcType=INTEGER},
+      </if>
+      <if test="commentCommentIncrease != null">
+        comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="replyId != null">
+        reply_id = #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="commentLikeIncrease != null">
+        comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        comment_content = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.Comment">
+    update comment
+    set comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{commentUser,jdbcType=INTEGER},
+      comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER},
+      comment_content = #{commentContent,jdbcType=LONGVARCHAR}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Comment">
+    update comment
+    set comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_user = #{commentUser,jdbcType=INTEGER},
+      comment_comment_increase = #{commentCommentIncrease,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      comment_like_increase = #{commentLikeIncrease,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

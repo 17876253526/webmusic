@@ -1,0 +1,27 @@
+#配置端口
+server:
+  port: 8080
+#配置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/webmusic
+    username: root
+    password: wangcaiming
+    type: com.alibaba.druid.pool.DruidDataSource
+    #清除缓存
+    groovy:
+      template:
+        cache: false
+  #配置邮箱（QQ邮箱）
+  mail:
+    host: smtp.exmail.qq.com
+    username: 用户名
+    password: 密码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true

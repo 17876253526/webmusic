@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SongMapper">
+  <resultMap id="BaseResultMap" type="entity.Song">
+    <id column="song_id" jdbcType="INTEGER" property="songId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="is_active" jdbcType="TINYINT" property="isActive" />
+    <result column="is_vip" jdbcType="TINYINT" property="isVip" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="storage_url" jdbcType="VARCHAR" property="storageUrl" />
+    <result column="playback" jdbcType="BIGINT" property="playback" />
+    <result column="collection" jdbcType="BIGINT" property="collection" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+    <result column="duration_time" jdbcType="VARCHAR" property="durationTime" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="song_album" jdbcType="INTEGER" property="songAlbum" />
+    <result column="song_kind_increase" jdbcType="INTEGER" property="songKindIncrease" />
+    <result column="song_comment_increase" jdbcType="INTEGER" property="songCommentIncrease" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.SongWithBLOBs">
+    <result column="lyric" jdbcType="LONGVARCHAR" property="lyric" />
+    <result column="note" jdbcType="LONGVARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    song_id, name, pic_url, is_active, is_vip, size, storage_url, playback, collection, 
+    upload_time, duration_time, integral, song_album, song_kind_increase, song_comment_increase
+  </sql>
+  <sql id="Blob_Column_List">
+    lyric, note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from song
+    where song_id = #{songId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from song
+    where song_id = #{songId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.SongWithBLOBs">
+    insert into song (song_id, name, pic_url, 
+      is_active, is_vip, size, 
+      storage_url, playback, collection, 
+      upload_time, duration_time, integral, 
+      song_album, song_kind_increase, song_comment_increase, 
+      lyric, note)
+    values (#{songId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, 
+      #{isActive,jdbcType=TINYINT}, #{isVip,jdbcType=TINYINT}, #{size,jdbcType=VARCHAR}, 
+      #{storageUrl,jdbcType=VARCHAR}, #{playback,jdbcType=BIGINT}, #{collection,jdbcType=BIGINT}, 
+      #{uploadTime,jdbcType=TIMESTAMP}, #{durationTime,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, 
+      #{songAlbum,jdbcType=INTEGER}, #{songKindIncrease,jdbcType=INTEGER}, #{songCommentIncrease,jdbcType=INTEGER}, 
+      #{lyric,jdbcType=LONGVARCHAR}, #{note,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.SongWithBLOBs">
+    insert into song
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="songId != null">
+        song_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="isVip != null">
+        is_vip,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="storageUrl != null">
+        storage_url,
+      </if>
+      <if test="playback != null">
+        playback,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="durationTime != null">
+        duration_time,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="songAlbum != null">
+        song_album,
+      </if>
+      <if test="songKindIncrease != null">
+        song_kind_increase,
+      </if>
+      <if test="songCommentIncrease != null">
+        song_comment_increase,
+      </if>
+      <if test="lyric != null">
+        lyric,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="songId != null">
+        #{songId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isVip != null">
+        #{isVip,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="storageUrl != null">
+        #{storageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playback != null">
+        #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null">
+        #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="songAlbum != null">
+        #{songAlbum,jdbcType=INTEGER},
+      </if>
+      <if test="songKindIncrease != null">
+        #{songKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="songCommentIncrease != null">
+        #{songCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="lyric != null">
+        #{lyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.SongWithBLOBs">
+    update song
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="storageUrl != null">
+        storage_url = #{storageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playback != null">
+        playback = #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null">
+        duration_time = #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="songAlbum != null">
+        song_album = #{songAlbum,jdbcType=INTEGER},
+      </if>
+      <if test="songKindIncrease != null">
+        song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="songCommentIncrease != null">
+        song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="lyric != null">
+        lyric = #{lyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.SongWithBLOBs">
+    update song
+    set name = #{name,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=TINYINT},
+      is_vip = #{isVip,jdbcType=TINYINT},
+      size = #{size,jdbcType=VARCHAR},
+      storage_url = #{storageUrl,jdbcType=VARCHAR},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      duration_time = #{durationTime,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      song_album = #{songAlbum,jdbcType=INTEGER},
+      song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER},
+      lyric = #{lyric,jdbcType=LONGVARCHAR},
+      note = #{note,jdbcType=LONGVARCHAR}
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Song">
+    update song
+    set name = #{name,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=TINYINT},
+      is_vip = #{isVip,jdbcType=TINYINT},
+      size = #{size,jdbcType=VARCHAR},
+      storage_url = #{storageUrl,jdbcType=VARCHAR},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      duration_time = #{durationTime,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      song_album = #{songAlbum,jdbcType=INTEGER},
+      song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER}
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.Song">
+    <id column="song_id" jdbcType="INTEGER" property="songId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+    <result column="is_active" jdbcType="TINYINT" property="isActive" />
+    <result column="is_vip" jdbcType="TINYINT" property="isVip" />
+    <result column="size" jdbcType="VARCHAR" property="size" />
+    <result column="storage_url" jdbcType="VARCHAR" property="storageUrl" />
+    <result column="playback" jdbcType="BIGINT" property="playback" />
+    <result column="collection" jdbcType="BIGINT" property="collection" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+    <result column="duration_time" jdbcType="VARCHAR" property="durationTime" />
+    <result column="integral" jdbcType="INTEGER" property="integral" />
+    <result column="song_album" jdbcType="INTEGER" property="songAlbum" />
+    <result column="song_kind_increase" jdbcType="INTEGER" property="songKindIncrease" />
+    <result column="song_comment_increase" jdbcType="INTEGER" property="songCommentIncrease" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="entity.SongWithBLOBs">
+    <result column="lyric" jdbcType="LONGVARCHAR" property="lyric" />
+    <result column="note" jdbcType="LONGVARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    song_id, name, pic_url, is_active, is_vip, size, storage_url, playback, collection, 
+    upload_time, duration_time, integral, song_album, song_kind_increase, song_comment_increase
+  </sql>
+  <sql id="Blob_Column_List">
+    lyric, note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from song
+    where song_id = #{songId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from song
+    where song_id = #{songId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.SongWithBLOBs">
+    insert into song (song_id, name, pic_url, 
+      is_active, is_vip, size, 
+      storage_url, playback, collection, 
+      upload_time, duration_time, integral, 
+      song_album, song_kind_increase, song_comment_increase, 
+      lyric, note)
+    values (#{songId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, 
+      #{isActive,jdbcType=TINYINT}, #{isVip,jdbcType=TINYINT}, #{size,jdbcType=VARCHAR}, 
+      #{storageUrl,jdbcType=VARCHAR}, #{playback,jdbcType=BIGINT}, #{collection,jdbcType=BIGINT}, 
+      #{uploadTime,jdbcType=TIMESTAMP}, #{durationTime,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, 
+      #{songAlbum,jdbcType=INTEGER}, #{songKindIncrease,jdbcType=INTEGER}, #{songCommentIncrease,jdbcType=INTEGER}, 
+      #{lyric,jdbcType=LONGVARCHAR}, #{note,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.SongWithBLOBs">
+    insert into song
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="songId != null">
+        song_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="picUrl != null">
+        pic_url,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="isVip != null">
+        is_vip,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="storageUrl != null">
+        storage_url,
+      </if>
+      <if test="playback != null">
+        playback,
+      </if>
+      <if test="collection != null">
+        collection,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="durationTime != null">
+        duration_time,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="songAlbum != null">
+        song_album,
+      </if>
+      <if test="songKindIncrease != null">
+        song_kind_increase,
+      </if>
+      <if test="songCommentIncrease != null">
+        song_comment_increase,
+      </if>
+      <if test="lyric != null">
+        lyric,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="songId != null">
+        #{songId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isVip != null">
+        #{isVip,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="storageUrl != null">
+        #{storageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playback != null">
+        #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null">
+        #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="songAlbum != null">
+        #{songAlbum,jdbcType=INTEGER},
+      </if>
+      <if test="songKindIncrease != null">
+        #{songKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="songCommentIncrease != null">
+        #{songCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="lyric != null">
+        #{lyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.SongWithBLOBs">
+    update song
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null">
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isVip != null">
+        is_vip = #{isVip,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="storageUrl != null">
+        storage_url = #{storageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="playback != null">
+        playback = #{playback,jdbcType=BIGINT},
+      </if>
+      <if test="collection != null">
+        collection = #{collection,jdbcType=BIGINT},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="durationTime != null">
+        duration_time = #{durationTime,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="songAlbum != null">
+        song_album = #{songAlbum,jdbcType=INTEGER},
+      </if>
+      <if test="songKindIncrease != null">
+        song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="songCommentIncrease != null">
+        song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER},
+      </if>
+      <if test="lyric != null">
+        lyric = #{lyric,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.SongWithBLOBs">
+    update song
+    set name = #{name,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=TINYINT},
+      is_vip = #{isVip,jdbcType=TINYINT},
+      size = #{size,jdbcType=VARCHAR},
+      storage_url = #{storageUrl,jdbcType=VARCHAR},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      duration_time = #{durationTime,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      song_album = #{songAlbum,jdbcType=INTEGER},
+      song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER},
+      lyric = #{lyric,jdbcType=LONGVARCHAR},
+      note = #{note,jdbcType=LONGVARCHAR}
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Song">
+    update song
+    set name = #{name,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=TINYINT},
+      is_vip = #{isVip,jdbcType=TINYINT},
+      size = #{size,jdbcType=VARCHAR},
+      storage_url = #{storageUrl,jdbcType=VARCHAR},
+      playback = #{playback,jdbcType=BIGINT},
+      collection = #{collection,jdbcType=BIGINT},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      duration_time = #{durationTime,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      song_album = #{songAlbum,jdbcType=INTEGER},
+      song_kind_increase = #{songKindIncrease,jdbcType=INTEGER},
+      song_comment_increase = #{songCommentIncrease,jdbcType=INTEGER}
+    where song_id = #{songId,jdbcType=INTEGER}
+  </update>
+</mapper>

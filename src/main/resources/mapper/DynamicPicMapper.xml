@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.DynamicPicMapper">
+  <resultMap id="BaseResultMap" type="entity.DynamicPic">
+    <id column="dynamic_pic_id" jdbcType="INTEGER" property="dynamicPicId" />
+    <result column="dynamic_img_url" jdbcType="VARCHAR" property="dynamicImgUrl" />
+    <result column="dynamic_pic_dynamic" jdbcType="INTEGER" property="dynamicPicDynamic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dynamic_pic_id, dynamic_img_url, dynamic_pic_dynamic
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dynamic_pic
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dynamic_pic
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.DynamicPic">
+    insert into dynamic_pic (dynamic_pic_id, dynamic_img_url, dynamic_pic_dynamic
+      )
+    values (#{dynamicPicId,jdbcType=INTEGER}, #{dynamicImgUrl,jdbcType=VARCHAR}, #{dynamicPicDynamic,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.DynamicPic">
+    insert into dynamic_pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dynamicPicId != null">
+        dynamic_pic_id,
+      </if>
+      <if test="dynamicImgUrl != null">
+        dynamic_img_url,
+      </if>
+      <if test="dynamicPicDynamic != null">
+        dynamic_pic_dynamic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dynamicPicId != null">
+        #{dynamicPicId,jdbcType=INTEGER},
+      </if>
+      <if test="dynamicImgUrl != null">
+        #{dynamicImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicPicDynamic != null">
+        #{dynamicPicDynamic,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.DynamicPic">
+    update dynamic_pic
+    <set>
+      <if test="dynamicImgUrl != null">
+        dynamic_img_url = #{dynamicImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicPicDynamic != null">
+        dynamic_pic_dynamic = #{dynamicPicDynamic,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.DynamicPic">
+    update dynamic_pic
+    set dynamic_img_url = #{dynamicImgUrl,jdbcType=VARCHAR},
+      dynamic_pic_dynamic = #{dynamicPicDynamic,jdbcType=INTEGER}
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.DynamicPic">
+    <id column="dynamic_pic_id" jdbcType="INTEGER" property="dynamicPicId" />
+    <result column="dynamic_img_url" jdbcType="VARCHAR" property="dynamicImgUrl" />
+    <result column="dynamic_pic_dynamic" jdbcType="INTEGER" property="dynamicPicDynamic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dynamic_pic_id, dynamic_img_url, dynamic_pic_dynamic
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dynamic_pic
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dynamic_pic
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.DynamicPic">
+    insert into dynamic_pic (dynamic_pic_id, dynamic_img_url, dynamic_pic_dynamic
+      )
+    values (#{dynamicPicId,jdbcType=INTEGER}, #{dynamicImgUrl,jdbcType=VARCHAR}, #{dynamicPicDynamic,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.DynamicPic">
+    insert into dynamic_pic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dynamicPicId != null">
+        dynamic_pic_id,
+      </if>
+      <if test="dynamicImgUrl != null">
+        dynamic_img_url,
+      </if>
+      <if test="dynamicPicDynamic != null">
+        dynamic_pic_dynamic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dynamicPicId != null">
+        #{dynamicPicId,jdbcType=INTEGER},
+      </if>
+      <if test="dynamicImgUrl != null">
+        #{dynamicImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicPicDynamic != null">
+        #{dynamicPicDynamic,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.DynamicPic">
+    update dynamic_pic
+    <set>
+      <if test="dynamicImgUrl != null">
+        dynamic_img_url = #{dynamicImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicPicDynamic != null">
+        dynamic_pic_dynamic = #{dynamicPicDynamic,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.DynamicPic">
+    update dynamic_pic
+    set dynamic_img_url = #{dynamicImgUrl,jdbcType=VARCHAR},
+      dynamic_pic_dynamic = #{dynamicPicDynamic,jdbcType=INTEGER}
+    where dynamic_pic_id = #{dynamicPicId,jdbcType=INTEGER}
+  </update>
+</mapper>

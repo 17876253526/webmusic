@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.BuyCreditMapper" >
+  <resultMap id="BaseResultMap" type="entity.BuyCredit" >
+    <id column="buy_credit_id" property="buyCreditId" jdbcType="INTEGER" />
+    <result column="buy_credit_user" property="buyCreditUser" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="buy_time" property="buyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    buy_credit_id, buy_credit_user, num, buy_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from buy_credit
+    where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from buy_credit
+    where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.BuyCredit" >
+    insert into buy_credit (buy_credit_id, buy_credit_user, num, 
+      buy_time)
+    values (#{buyCreditId,jdbcType=INTEGER}, #{buyCreditUser,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
+      #{buyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.BuyCredit" >
+    insert into buy_credit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="buyCreditId != null" >
+        buy_credit_id,
+      </if>
+      <if test="buyCreditUser != null" >
+        buy_credit_user,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="buyTime != null" >
+        buy_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="buyCreditId != null" >
+        #{buyCreditId,jdbcType=INTEGER},
+      </if>
+      <if test="buyCreditUser != null" >
+        #{buyCreditUser,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="buyTime != null" >
+        #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.BuyCredit" >
+    update buy_credit
+    <set >
+      <if test="buyCreditUser != null" >
+        buy_credit_user = #{buyCreditUser,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="buyTime != null" >
+        buy_time = #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.BuyCredit" >
+    update buy_credit
+    set buy_credit_user = #{buyCreditUser,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
+      buy_time = #{buyTime,jdbcType=TIMESTAMP}
+    where buy_credit_id = #{buyCreditId,jdbcType=INTEGER}
+  </update>
+</mapper>
