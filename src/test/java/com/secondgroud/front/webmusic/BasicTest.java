@@ -1,5 +1,6 @@
 package com.secondgroud.front.webmusic;
 
+import com.secondgroud.front.webmusic.entity.User;
 import com.secondgroud.front.webmusic.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,8 @@ public class BasicTest {
     @Test
     public void testjdbcContect(){
         try {
-            userMapper.selectByPrimaryKey(0);
+            User user = userMapper.selectByPrimaryKey(1);
+            System.out.println(user);
             System.out.println("数据库连接成功");
         }catch (Exception e){
             System.out.println("数据库连接失败（检查application.xml数据源的url,username,password以及端口）");
