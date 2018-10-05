@@ -5,15 +5,17 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
+<<<<<<< Updated upstream
     url: jdbc:mysql://localhost:3306/cloudmusicplus
     username: root
     password: root
+=======
+    url: jdbc:mysql://localhost:3307/webmusic?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    username: root1
+    password: wangcaiming
+>>>>>>> Stashed changes
     type: com.alibaba.druid.pool.DruidDataSource
 
-    #清除缓存
-    groovy:
-      template:
-        cache: false
   #配置邮箱（QQ邮箱）
   mail:
     host: smtp.exmail.qq.com
