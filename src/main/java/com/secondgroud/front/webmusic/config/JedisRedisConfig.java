@@ -17,8 +17,8 @@ import redis.clients.jedis.JedisPoolConfig;
 public class JedisRedisConfig {
     @Value("${spring.redis.host}")
     private  String host;
-    @Value("${spring.redis.password}")
-    private  String password;
+    /*@Value("${spring.redis.password}")
+    private  String password;*/
     @Value("${spring.redis.port}")
     private  int port;
     @Value("${spring.redis.timeout}")
@@ -34,7 +34,7 @@ public class JedisRedisConfig {
         factory.setHostName(host);
         factory.setPort(port);
         factory.setTimeout(timeout);
-        factory.setPassword(password);
+        /*factory.setPassword(password);*/
         return factory;
     }
     @Bean
@@ -43,7 +43,8 @@ public class JedisRedisConfig {
         jedisPoolConfig.setMaxIdle(maxIdle);
         jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
  
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        //JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout);
         return jedisPool;
     }
 }
