@@ -1,14 +1,13 @@
 package com.secondgroud.front.webmusic;
 
-import com.secondgroud.front.webmusic.entity.Like;
 import com.secondgroud.front.webmusic.entity.User;
 import com.secondgroud.front.webmusic.mapper.UserMapper;
-import com.secondgroud.front.webmusic.service.FocusRedisService;
-import com.secondgroud.front.webmusic.service.LikeRedisService;
-import com.secondgroud.front.webmusic.service.SongRedisService;
+import com.secondgroud.front.webmusic.service.impl.FocusRedisServiceImpl;
+import com.secondgroud.front.webmusic.service.impl.LikeRedisServiceImpl;
 import com.secondgroud.front.webmusic.utils.LikeTypeLimit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -23,10 +22,13 @@ public class BasicTest {
     UserMapper userMapper;
 
     @Autowired
-    FocusRedisService redisService;
+    FocusRedisServiceImpl redisService;
 
     @Autowired
-    LikeRedisService likeRedisService;
+    LikeRedisServiceImpl likeRedisService;
+
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
 
     //测试数据库连接
@@ -75,6 +77,16 @@ public class BasicTest {
 
     }
 
+    @Test
+    public void sendSouyunkuTest(){
 
+        String context = "最新消息";
+
+        String routeKey = "focus";
+
+        String exchange = "EXCHANGE";
+
+        rabbitTemplate.convertAndSend( exchange,routeKey, context);
+    }
 
 }

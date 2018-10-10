@@ -1,17 +1,17 @@
 package com.secondgroud.front.webmusic.controller;
 
 import com.secondgroud.front.webmusic.entity.Song;
-import com.secondgroud.front.webmusic.service.SongRedisService;
+import com.secondgroud.front.webmusic.service.impl.SongRedisServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    @Autowired
-    private SongRedisService redisService;
+    /*@Autowired
+    private SongRedisServiceImpl redisService;*/
 
-    @GetMapping("save")
+    /*@GetMapping("save")
     public  String save() {
         Song song = new Song();
         song.setSongId(1);
@@ -28,5 +28,5 @@ public class UserController {
     public Song get() {
         Song song=(Song)redisService.get(1+"");
         return song;
-    }
+    }*/
 }
