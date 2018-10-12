@@ -1,9 +1,12 @@
 package com.secondgroud.front.webmusic;
 
+import com.alibaba.fastjson.JSONObject;
+import com.secondgroud.front.webmusic.entity.Song;
 import com.secondgroud.front.webmusic.entity.User;
 import com.secondgroud.front.webmusic.mapper.UserMapper;
 import com.secondgroud.front.webmusic.service.impl.FocusRedisServiceImpl;
 import com.secondgroud.front.webmusic.service.impl.LikeRedisServiceImpl;
+import com.secondgroud.front.webmusic.utils.ElasticsearchUtils;
 import com.secondgroud.front.webmusic.utils.LikeTypeLimit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,13 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.awt.print.Book;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BasicTest {
 
-    @Autowired
+    /*@Autowired
     UserMapper userMapper;
 
     @Autowired
@@ -57,27 +61,27 @@ public class BasicTest {
 
     @Test
     public void TestLike() {
-        /*给歌曲Id为1点赞，*/
+        *//*给歌曲Id为1点赞，*//*
        likeRedisService.like(LikeTypeLimit.getSong(),1,1);
        likeRedisService.like(LikeTypeLimit.getSong(),1,2);
        likeRedisService.like(LikeTypeLimit.getSong(),1,3);
-        /*给歌曲Id为1下的评论id为1的评论点赞,fristId是歌曲ID,secondId是评论Id*/
+        *//*给歌曲Id为1下的评论id为1的评论点赞,fristId是歌曲ID,secondId是评论Id*//*
         likeRedisService.like(LikeTypeLimit.getSongComment(),1,1,1);
         likeRedisService.like(LikeTypeLimit.getSongComment(),1,1,2);
         likeRedisService.like(LikeTypeLimit.getSongComment(),1,1,3);
-        /*给歌曲Id为1下的评论id为2、3的评论点赞,fristId是歌曲ID,secondId是评论Id*/
+        *//*给歌曲Id为1下的评论id为2、3的评论点赞,fristId是歌曲ID,secondId是评论Id*//*
         likeRedisService.like(LikeTypeLimit.getSongComment(),1,2,1);
         likeRedisService.like(LikeTypeLimit.getSongComment(),1,3,1);
 
 
-        /*动态点赞*/
+        *//*动态点赞*//*
         likeRedisService.like(LikeTypeLimit.getDynamic(),1,1);
         likeRedisService.like(LikeTypeLimit.getDynamic(),1,2);
         likeRedisService.like(LikeTypeLimit.getDynamic(),1,3);
 
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void sendSouyunkuTest(){
 
         String context = "最新消息";
@@ -87,6 +91,8 @@ public class BasicTest {
         String exchange = "EXCHANGE";
 
         rabbitTemplate.convertAndSend( exchange,routeKey, context);
-    }
+    }*/
+
+
 
 }
